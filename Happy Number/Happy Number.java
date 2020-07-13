@@ -1,27 +1,34 @@
 class Solution {
     public boolean isHappy(int n) {
-        int n1 = 0;
-        int n2 = 0;
-        int sum1 = 0;
-        int sum2 = 1;        
-     
-        n / 10 = n1;
-        n % 10 = n2;
+        int sum = 0;
+        int s = 0;
+        int m = 0;
+        int[] num = new int[10];
+        int[] v = new int[10];
         
-        while(sum1 == sum2){
-            n1*n1 + n2*n2 = sum1;
-            sum1 / 10 = n1;
-            sum1 % 10 = n2;
-            n1*n1 + n2*n2 = sum2;
+        v[0] = 0;
+        
+        while(n != v[m]){
+            for(int i = 0; n > 0; i++){
+                num[i] = n % 10; // 각각 숫자 배열
+                sum++; // 자릿수
+                n /= 10;
+            }
+        
+            for(int i = 0; i < sum; i++){
+                s += num[i] * num[i];
+            }
+        
+            v[m] = s;
+            n = v[m];
+        
+            m++;
         }
         
-        if(sum1 == 1){
-            answer = "true";
-            return answer; 
-        }
-        else{
-            answer = "true";
-            return answer;
-        }
+        if(n == 1)
+            return true;
+        else
+            return false;
+        
     }
 }
