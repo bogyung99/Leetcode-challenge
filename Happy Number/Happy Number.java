@@ -1,27 +1,32 @@
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
     public boolean isHappy(int n) {
-        int sum = 0;
-        int s = 0;
+        HashMap<Integer, Integer> ht1 = new HashMap<>();
+        HashMap<Integer, Integer> ht2 = new HashMap<>();
+        
         int m = 0;
-        int[] num = new int[10];
-        int[] v = new int[10];
+        int cp = 0;
         
-        v[0] = 0;
-        
-        while(n != v[m]){
+        while(n != cp){
+            int sum = 0;
+            int s = 0;
+            cp = n;
+            
             for(int i = 0; n > 0; i++){
-                num[i] = n % 10; // 각각 숫자 배열
+                ht1.put(i, n % 10); // 각각 숫자 배열
                 sum++; // 자릿수
                 n /= 10;
             }
         
             for(int i = 0; i < sum; i++){
-                s += num[i] * num[i];
+                s += ht1.get(i) * ht1.get(i);
             }
         
-            v[m] = s;
-            n = v[m];
-        
+            ht2.put(m, s);
+            n = s;
+            
             m++;
         }
         
