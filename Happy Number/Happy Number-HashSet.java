@@ -3,7 +3,7 @@ import java.util.Set;
 
 class Solution {
     public boolean isHappy(int n) {
-        boolean result;
+        boolean result = true;
 
         HashSet<Integer> hs = new HashSet<Integer>();
 
@@ -13,8 +13,9 @@ class Solution {
     		if(n == 1){
                 result = true;
                 break;
+            }
 
-    		cp(n);
+    		n = cp(n);
 
     		if(hs.contains(n)) {
     			result = false;
@@ -22,21 +23,22 @@ class Solution {
     		}
 
     		hs.add(n);
-    	} 	
+        }
 
         return result;
+        
     }
 
-    private int cp(int n){
+    private int cp(int a) {
         int num = 0;
 
-    	while(n != 0) {
-    		num += (n % 10) * (n % 10);
-    		n /= 10;
+    	while(a != 0) {
+    		num += (a % 10) * (a % 10);
+    		a /= 10;
     	}	
 
-    	n = num;
+    	a = num;
 
-        return n;
+        return a;
     }
 }
